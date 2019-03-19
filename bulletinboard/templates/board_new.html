@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ form.media }}
+
+<form method="post" action="">
+    {% csrf_token %}
+    제목: {{ form.title }} 작성자: {{ form.writer}}<br/>
+    비밀글: {{ form.secret }} <br/>
+    {{ form.text }}
+    <br/>
+    <button type="submit">작성</button>
+</form>
+<div style="height:200px"></div>
+
+{% endblock %}

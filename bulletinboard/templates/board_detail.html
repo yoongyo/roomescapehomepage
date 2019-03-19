@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="background-color:rgb(255, 247, 231)">
+    <p>제목: {{ board_detail.title }} 게시일: {{ board_detail.created_date }}</p>
+
+    <p >{{ board_detail.text|safe }}</p> <!-- 내용 -->
+    <br/>
+    <br/>
+    <!-- 이분부터 추가한 부분-->
+    {% for i in comment %}
+    comment  작성자:{{ i.writer }}내용:{{i.text|safe}}
+    {% endfor %}
+    <form method="post" action="">
+        {% csrf_token %}
+        작성자: {{ form.writer }}<br/>
+        {{ form.text }}
+        <br/>
+        <button type="submit">작성</button>
+    </form>
+</div>
+{% endblock %}

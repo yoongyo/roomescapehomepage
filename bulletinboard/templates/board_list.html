@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{%for i in board_list %}
+<div style="background-color:rgb(255, 247, 231)">
+
+    <a href="{{ i.id }}">{{ i.id }} {{ i.title }} {{ i.writer }} </a> <!-- pk: 글번호, title은 제목, 작성자 -->
+    {% endfor %}
+    <a href="{% url 'bulletinboard:board_new' %}">글올리기</a>
+</div>
+{% endblock %}

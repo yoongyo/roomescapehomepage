@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head>
+        <meta charset="utf-8">
+        <!-- 부트스트랩 모바일 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 100) {
+                    $(".top-nav").addClass("light-header");
+                } else {
+                    $(".top-nav").removeClass("light-header");
+                }
+            });
+            function MoneySwap(price){
+               var temp_str = String(price);
+               for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++) {
+                retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;
+               }
+               return retValue;
+            }
+            $(function() {
+                {% for i in info %}
+                    $("#price_2").html(MoneySwap({{ i.people2 }})+'(인당)');
+                    $("#card_2").html(MoneySwap({{ i.people2|add:2000 }})+'원');
+                    $("#price_3").html(MoneySwap({{ i.people3 }})+'(인당)');
+                    $("#card_3").html(MoneySwap({{ i.people3|add:2000 }})+'원');
+                    $("#price_4").html(MoneySwap({{ i.people4 }})+'(인당)');
+                    $("#card_4").html(MoneySwap({{ i.people4|add:2000 }})+'원');
+                    $("#price_5").html(MoneySwap({{ i.people5 }})+'(인당)');
+                    $("#card_5").html(MoneySwap({{ i.people5|add:2000 }})+'원');
+                    $("#price_6").html(MoneySwap({{ i.people6 }})+'(인당)');
+                    $("#card_6").html(MoneySwap({{ i.people6|add:2000 }})+'원');
+                    $("#price_m").html(MoneySwap({{ i.middleHigh }})+'(인당)');
+                    $("#card_m").html(MoneySwap({{ i.middleHigh|add:2000 }})+'원');
+                    $("#price_e").html(MoneySwap({{ i.elementary }})+'(인당)');
+                    $("#card_e").html(MoneySwap({{ i.elementary|add:2000 }})+'원');
+                {% endfor %}
+            })
+
+            $(document).ready(function () {
+                var itemsMainDiv = ('.MultiCarousel');
+                var itemsDiv = ('.MultiCarousel-inner');
+                var itemWidth = "";
+
+                $('.leftLst, .rightLst').click(function () {
+                    var condition = $(this).hasClass("leftLst");
+                    if (condition)
+                        click(0, this);
+                    else
+                        click(1, this)
+                });
+
+                ResCarouselSize();
+
+                $(window).resize(function () {
+                    ResCarouselSize();
+                });
+
+                //this function define the size of the items
+                function ResCarouselSize() {
+                    var incno = 0;
+                    var dataItems = ("data-items");
+                    var itemClass = ('.item');
+                    var id = 0;
+                    var btnParentSb = '';
+                    var itemsSplit = '';
+                    var sampwidth = $(itemsMainDiv).width();
+                    var bodyWidth = $('body').width();
+                    $(itemsDiv).each(function () {
+                        id = id + 1;
+                        var itemNumbers = $(this).find(itemClass).length;
+                        btnParentSb = $(this).parent().attr(dataItems);
+                        itemsSplit = btnParentSb.split(',');
+                        $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+                        if (bodyWidth >= 1200) {
+                            incno = itemsSplit[2];
+                            itemWidth = sampwidth / incno;
+                        }
+                        else if (bodyWidth >= 992) {
+                            incno = itemsSplit[2];
+                            itemWidth = sampwidth / incno;
+                        }
+                        else if (bodyWidth >= 768) {
+                            incno = itemsSplit[1];
+                            itemWidth = sampwidth / incno;
+                        }
+                        else {
+                            incno = itemsSplit[0];
+                            itemWidth = sampwidth / incno;
+                        }
+                        $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+                        $(this).find(itemClass).each(function () {
+                            $(this).outerWidth(itemWidth);
+                        });
+
+                        $(".leftLst").addClass("over");
+                        $(".rightLst").removeClass("over");
+
+                    });
+                }
+
+
+                //this function used to move the items
+                function ResCarousel(e, el, s) {
+                    var leftBtn = ('.leftLst');
+                    var rightBtn = ('.rightLst');
+                    var translateXval = '';
+                    var divStyle = $(el + ' ' + itemsDiv).css('transform');
+                    var values = divStyle.match(/-?[\d\.]+/g);
+                    var xds = Math.abs(values[4]);
+                    if (e == 0) {
+                        translateXval = parseInt(xds) - parseInt(itemWidth * s);
+                        $(el + ' ' + rightBtn).removeClass("over");
+
+                        if (translateXval <= itemWidth / 2) {
+                            translateXval = 0;
+                            $(el + ' ' + leftBtn).addClass("over");
+                        }
+                    }
+                    else if (e == 1) {
+                        var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+                        translateXval = parseInt(xds) + parseInt(itemWidth * s);
+                        $(el + ' ' + leftBtn).removeClass("over");
+
+                        if (translateXval >= itemsCondition - itemWidth / 2) {
+                            translateXval = itemsCondition;
+                            $(el + ' ' + rightBtn).addClass("over");
+                        }
+                    }
+                    $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+                }
+
+                //It is used to get some elements from btn
+                function click(ell, ee) {
+                    var Parent = "#" + $(ee).parent().attr("id");
+                    var slide = $(Parent).attr("data-slide");
+                    ResCarousel(ell, Parent, slide);
+                }
+
+            });
+        </script>
+        <style>
+            .MultiCarousel { float: left; overflow: hidden; padding: 30px; width: 100%; position:relative; }
+            .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+            .MultiCarousel .MultiCarousel-inner .item { float: left;}
+            .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+            .MultiCarousel .leftLst { left:0; }
+            .MultiCarousel .rightLst { right:0; }
+            .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+        </style>
+    </head>
+    <body>
+    {% load static %}
+    {% for i in info %}
+        <!-- PC 버전 -->
+        <div class="d-none d-sm-block">
+            <nav class="px-5 navbar navbar-expand-md top-nav" style="background-color:rgb(51,51,51);">
+                <a class="navbar-brand" href="{% url 'main' %}">
+                    <img width="70%" src="{{ i.logo.url }}">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'information:information' %}">이용안내<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_info' %}">테마</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_list' today %}">예약하기</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'FAQ:FAQs' %}">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'bulletinboard:board_list' %}">Q&A</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold mx-2" href="">예약확인 및 취소</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 모바일 버전 -->
+        <div class="p-2 d-block d-sm-none" style="background-color:rgb(51,51,51);">
+            <div class="row text-center mb-3">
+                <a class=text-center" href="{% url 'main' %}">
+                    <img width="70%" src="{{ i.logo.url }}">
+                </a>
+            </div>
+            <div class="row my-1" style="font-size:0.4rem">
+                <div class="p-0 text-center col-2">
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="{% url 'information:information' %}">이용안내<span class="sr-only"></span></a>
+                </div>
+                <div class="p-0 text-center col-2">
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_info' %}">테마</a>
+                </div>
+                <div class="p-0 text-center col-2" >
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_list' today %}">예약하기 </a>
+                </div>
+                <div class="p-0 text-center col-2" >
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="{% url 'FAQ:FAQs' %}">FAQ</a>
+                </div>
+                <div class="p-0 text-center col-2">
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="{% url 'bulletinboard:board_list' %}">Q&A</a>
+                </div>
+                <div class="p-0 text-center col-2">
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold mx-2" href="">확인/취소</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인 이미지 carousel -->
+        <div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                <li data-target="#carousel-example-2" data-slide-to="2"></li>
+            </ol>
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="view">
+                        <img class="d-block w-100" src="{{ i.image1.url }}" alt="First slide">
+                        <div class="mask rgba-black-light"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                <!--Mask color-->
+                    <div class="view">
+                        <img class="d-block w-100" src="{{ i.image2.url }}" alt="Second slide">
+                        <div class="mask rgba-black-light"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!--Mask color-->
+                    <div class="view">
+                        <img class="d-block w-100" src="{{ i.image3.url }}" alt="Third slide">
+                        <div class="mask rgba-black-light"></div>
+                    </div>
+                </div>
+            </div>
+          <!--/.Slides-->
+          <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+        </div>
+
+        <!-- 주의사항 -->
+        <div class="d-none d-sm-block container-fluid py-3" style="background-color:rgb(51,51,51);">
+            <div class="container py-4">
+                <h1 class="text-center text-white mb-5 mt-3">주의 사항</h1>
+                <div class="row mx-5">
+                    <div class="col-lg-3 col-xs-12 text-center">
+                        <img src="{% static 'image/1.png' %}">
+                        <p class="text-white my-3">
+                            입장 전 주의사항 설명, 테마설명 등 기본 숙지사항을 안내드립니다.
+                            원활한 게임 진행을 위하여
+                            예약시간 10분전에 매장에 도착하여
+                            간단한 안내를 받으시기 바랍니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <img src="{% static 'image/2.png' %}">
+                        <p class="text-white my-3">
+                            폐쇄된 특정 공간에서 이루어지는
+                            추리탈출 테마시설로 폐쇄공포증이 있거나
+                            노약자, 임산부, 음주자, 또한 13세 이하의
+                            어린이는 보호자 동반시 참여 가능 합니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <img src="{% static 'image/3.png' %}">
+                        <p class="text-white my-3">
+                            소품과 컨텐츠는 외부로 유출 불가합니다.
+                            게임참여시 기밀유지에 동의하는
+                            것으로간주되며 테마룸 입장 전
+                            핸드폰, 카메라, 필기도구 등은 준비된
+                            보관함에 보관하시게 됩니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <img src="{% static 'image/4_1.png' %}">
+                        <p class="text-white my-3">
+                            고객의 안전을 위해 CCTV와
+                            인터폰이 설치되어 있습니다.
+                            휴대하신 라이터, 칼 등 위험물품은
+                            게임을 이용하시기 전에 보관함에
+                            보관하시기 바랍니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 테마룸 예약하기 -->
+        <div class="container-fluid py-5" style="background-color:black">
+            <div class="container px-5 mb-4">
+                <h2 class="text-center pb-4" style="color:rgb(251, 221, 96);">테마룸 예약하기</h2>
+                <div class="row">
+                    <div class="MultiCarousel" data-items="1,3,4,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                        <div class="MultiCarousel-inner">
+                            {% for i in theme %}
+                            <div class="item">
+                                <div style="padding:0 1rem 1rem 1rem;border:5px solid black;background-color:rgb(51,51,51);">
+                                    <div>
+                                        <h4 class="text-center text-white my-3">{{ i.name }}</h4>
+                                        <img width="100%" height="323px" src="{{ i.image.url }}">
+                                        <p class="text-center text-white" style="font-size:0.9rem">
+                                            난이도 : ★★★★☆☆<br>
+                                            장르 : {{ i.genre }}<br>
+                                            인원(시간) : {{ i.numPeople }}<br>
+                                            공포도 : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            활동성 : <br>
+                                            ●○○○○ &nbsp&nbsp&nbsp&nbsp&nbsp●●●●○<br>
+                                        </p>
+                                        <a href="{% url 'theme:theme_booking' today i.name %}" style="text-decoration:none;">
+                                            <div style="background-color:rgb(33,33,33);">
+                                                <h4 class="text-center py-1" style="color: rgb(251,221,96);">BOOKING</h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="btn btn-secondary leftLst"><</button>
+                        <button class="btn btn-secondary rightLst">></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 이용요금-->
+        <div class="d-none d-sm-block container-fluid py-5" style="background-color:rgb(51,51,51);">
+            <div class="container px-5">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 col-xs-12">
+                        <h2 class="text-center text-white pb-4">이용요금</h2>
+                        <div>
+                            <table style="width:100%" class="table table-bordered text-white text-center" cellpadding=0 cellspacing=0 border=0 id="price">
+                                <tbody>
+                                <tr style="background-color:white;color:black;">
+                                    <td style="border:1px solid white">인원수</td>
+                                    <td style="border:1px solid white">현금결제</td>
+                                    <td style="border:1px solid white">카드결제</td>
+                                    <td style="border:1px solid white">이벤트</td>
+                                </tr>
+                                <tr>
+                                    <td class="member">2인</td>
+                                    <td id="price_2"></td>
+                                    <td id="card_2"></td>
+                                    <td rowspan="7" class="pt-5">
+                                        {{ i.event|safe }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="member">3인</td>
+                                    <td id="price_3"></td>
+                                    <td id="card_3"></td>
+                                </tr>
+                                <tr>
+                                <td class="member">4인</td>
+                                    <td id="price_4"></td>
+                                    <td id="card_4"></td>
+                                </tr>
+                                <tr>
+                                    <td class="member">5인</td>
+                                    <td id="price_5"></td>
+                                    <td id="card_5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="member">6인</td>
+                                    <td id="price_6"></td>
+                                    <td id="card_6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="member">중고생</td>
+                                    <td id="price_m"></td>
+                                    <td id="card_m"></td>
+                                </tr>
+                                <tr>
+                                    <td class="member">초등생</td>
+                                    <td id="price_e"></td>
+                                    <td id="card_e"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 지도 -->
+        <div style="background-color:rgb(51,51,51);">
+            <iframe src="{{ i.map }}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        </div>
+
+        <!-- 푸터 -->
+        <!-- PC 버전 -->
+        <footer class="py-4 px-5 d-none d-sm-block" style="background-color:rgb(51,51,51);">
+            <div class="px-4">
+                <h6 class="text-white" style="font-size:13pt">TEL : {{ i.Tel }} /  영업시간 : {{ i.businessHours }}</h6>
+                <p style="font-size:11pt" class="text-white">상호명 : {{ i.fullName }} /  대표자 : {{ i.CEO }} /  사업자등록번호 : {{ i.businessLicense }} /  주소 : {{ i.address }} /  E-mail : {{ i.Email }}</p>
+                <p class="text-center text-white mt-2" style="margin-bottom:0">Copyrightⓒ 2019 Bizchool. All right reserved.</p>
+            </div>
+        </footer>
+
+
+
+        <!-- 모바일 버전 -->
+        <footer class="py-3 d-block d-sm-none" style="background-color:rgb(51,51,51);">
+            <p style="font-size:0.8rem" class="text-white text-center">
+                <b style="font-size:1.1rem">STORE INFO.</b><br>
+                <b style="font-size:1.8rem"><a style="color:yellow;text-decoration:none;" href="tel: 031-613-9788" class="tel">{{ i.Tel }}<br>
+                </a></b>
+                <span>번호 클릭 시 전화 연결됩니다.</span><br /><br />
+                <span style="font-size:1.2rem">계좌이체<br />
+                    {{ i.bank }}</span><br />
+                <br />
+                상호명 : {{ i.fullName }} / 대표자 : {{ i.CEO }}<br />
+                사업자등록번호 : {{ i.businessLicense }} <br />
+                <div class="container">
+                    <p style="font-size:0.8rem" class="text-white text-center">주소 : {{ i.address }}</p>
+                </div>
+            </p>
+            <p class="text-center text-white mt-2" style="font-size:0.7rem;margin-bottom:0">Copyrightⓒ 2019 Bizchool. All right reserved.</p>
+        </footer>
+        {% endfor %}
+    </body>
