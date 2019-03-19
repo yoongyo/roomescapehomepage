@@ -1,4 +1,4 @@
 django==2.1.0
 gunicorn
-dj-datebase-url
+dj-database-url
 psycopg2
