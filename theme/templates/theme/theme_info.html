@@ -49,10 +49,32 @@
                             </div>
                         <div class="col-7">
                             <div class="my-3">
-                                <span class="font-weight-bold" style="color: rgb(241, 211, 92);font-size:27pt">{{ i.name }}</span>
+                                <span class="font-weight-bold" style="color: gold;font-size:27pt">{{ i.name }}</span>
                                 <span class="text-white font-weight-bold" style="font-size:15pt;">&nbsp;&nbsp;({{ i.genre }})</span>
                             </div>
-                            <h5 class="text-white">진행시간 : 60분    참여인원 : {{ i.numPeople }}   난이도: ★★★★☆☆</h5>
+                            <h5 class="text-white">진행시간 : 60분  &nbsp;&nbsp;&nbsp;  참여인원 : {{ i.numPeople }}</h5>
+                            <h6 class="text-white">
+                                난이도 : <span style="color:gold">{% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                                {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                                {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
+                                {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
+                                {% if i.difficulty == 6 %} ★★★★★★{% endif %}
+                                </span>
+                                &nbsp;&nbsp;
+                                공포도 : <span style="color:gold">{% if i.horror == 2 %} ●●○○○○{% endif %}
+                                {% if i.horror == 3 %} ●●●○○○{% endif %}
+                                {% if i.horror == 4 %} ●●●●○○{% endif %}
+                                {% if i.horror == 5 %} ●●●●●○{% endif %}
+                                {% if i.horror == 6 %} ●●●●●●{% endif %}</span>
+                                &nbsp;&nbsp;
+                                활동성 : <span style="color:gold">{% if i.activity == 1 %} ●○○○○○{% endif %}
+                                {% if i.activity == 2 %} ●●○○○○{% endif %}
+                                {% if i.activity == 3 %} ●●●○○○{% endif %}
+                                {% if i.activity == 4 %} ●●●●○○{% endif %}
+                                {% if i.activity == 5 %} ●●●●●○{% endif %}
+                                {% if i.activity == 6 %} ●●●●●●{% endif %}</span>
+                            </h6>
                             <br>
                             <p class="text-white mr-3" style="height:220px;">{{ i.summary|safe }}
                             </p>
@@ -72,7 +94,7 @@
         <div class="row my-4">
             <div class="col-lg-2"></div>
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 py-3" style="background-color:rgb(51,51,51);">
-                <h5 class="font-weight-bold text-center" style="color: rgb(241, 211, 92);font-size:27pt">{{ i.name }}</h5>
+                <h5 class="font-weight-bold text-center" style="color: gold;font-size:27pt">{{ i.name }}</h5>
                 <h6 class="text-white font-weight-bold text-center" style="font-size:15pt;">({{ i.genre }})</h6>
                 <div class="row">
                     <div class="col-md-5 col-xs-12 text-center my-2">
@@ -80,8 +102,33 @@
                     </div>
                     <div class="col-md-7">
                         <h5 class="text-white text-center">진행시간 : 60분&nbsp;&nbsp;&nbsp; 참여인원 : {{ i.numPeople }}</h5>
-                        <h5 class="text-white text-center">난이도: ★★★★☆☆</h5>
-                        <p class="text-white">{{ i.summary|safe }}</p>
+                        <h5 class="text-white text-center">난이도 :
+                            <span style="color:gold">
+                                {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                                {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                                {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
+                                {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
+                                {% if i.difficulty == 6 %} ★★★★★★{% endif %}</span></h5>
+                        <h6 class="text-white text-center">공포도 :
+                            <span style="color:gold">
+                                {% if i.horror == 1 %} ●○○○○○{% endif %}
+                                {% if i.horror == 2 %} ●●○○○○{% endif %}
+                                {% if i.horror == 3 %} ●●●○○○{% endif %}
+                                {% if i.horror == 4 %} ●●●●○○{% endif %}
+                                {% if i.horror == 5 %} ●●●●●○{% endif %}
+                                {% if i.horror == 6 %} ●●●●●●{% endif %}</span>
+                            &nbsp;&nbsp;&nbsp;
+                            활동성 :
+                            <span style="color:gold">
+                                {% if i.activity == 1 %} ●○○○○○{% endif %}
+                                {% if i.activity == 2 %} ●●○○○○{% endif %}
+                                {% if i.activity == 3 %} ●●●○○○{% endif %}
+                                {% if i.activity == 4 %} ●●●●○○{% endif %}
+                                {% if i.activity == 5 %} ●●●●●○{% endif %}
+                                {% if i.activity == 6 %} ●●●●●●{% endif %}</span>
+                        </h6>
+                        <p class="text-white">{{ i.mobile_summary|safe }}</p>
                         <a class="text-center" href="{% url 'theme:theme_booking' today i.name %}" style="text-decoration:none;">
                             <div class="col-md-4 col-sm-4 col-xs-12 px-5 py-4" style="border: 2px solid white">
                                 <p style="margin:0" class="text-white text-center">BOOKING</p>

@@ -6,6 +6,7 @@ class Theme(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='theme/')
     summary = models.TextField()
+    mobile_summary = models.TextField()
     numPeople = models.IntegerField(null=True, blank=True)
     difficulty = models.IntegerField()
     activity = models.IntegerField(null=True, blank=True)

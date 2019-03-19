@@ -320,7 +320,7 @@
         <!-- 테마룸 예약하기 -->
         <div class="container-fluid py-5" style="background-color:black">
             <div class="container px-5 mb-4">
-                <h2 class="text-center pb-4" style="color:rgb(251, 221, 96);">테마룸 예약하기</h2>
+                <h2 class="text-center pb-4" style="color:gold">테마룸 예약하기</h2>
                 <div class="row">
                     <div class="MultiCarousel" data-items="1,3,4,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
                         <div class="MultiCarousel-inner">
@@ -331,16 +331,33 @@
                                         <h4 class="text-center text-white my-3">{{ i.name }}</h4>
                                         <img width="100%" height="323px" src="{{ i.image.url }}">
                                         <p class="text-center text-white" style="font-size:0.9rem">
-                                            난이도 : ★★★★☆☆<br>
+                                            난이도 :  {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                                    {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                                                    {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                                                    {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
+                                                    {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
+                                                    {% if i.difficulty == 6 %} ★★★★★★{% endif %}<br>
                                             장르 : {{ i.genre }}<br>
                                             인원(시간) : {{ i.numPeople }}<br>
                                             공포도 : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                             활동성 : <br>
-                                            ●○○○○ &nbsp&nbsp&nbsp&nbsp&nbsp●●●●○<br>
+                                            {% if i.horror == 1 %} ●○○○○○{% endif %}
+                                            {% if i.horror == 2 %} ●●○○○○{% endif %}
+                                            {% if i.horror == 3 %} ●●●○○○{% endif %}
+                                            {% if i.horror == 4 %} ●●●●○○{% endif %}
+                                            {% if i.horror == 5 %} ●●●●●○{% endif %}
+                                            {% if i.horror == 6 %} ●●●●●●{% endif %}
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp
+                                            {% if i.activity == 1 %} ●○○○○○{% endif %}
+                                            {% if i.activity == 2 %} ●●○○○○{% endif %}
+                                            {% if i.activity == 3 %} ●●●○○○{% endif %}
+                                            {% if i.activity == 4 %} ●●●●○○{% endif %}
+                                            {% if i.activity == 5 %} ●●●●●○{% endif %}
+                                            {% if i.activity == 6 %} ●●●●●●{% endif %}<br>
                                         </p>
                                         <a href="{% url 'theme:theme_booking' today i.name %}" style="text-decoration:none;">
                                             <div style="background-color:rgb(33,33,33);">
-                                                <h4 class="text-center py-1" style="color: rgb(251,221,96);">BOOKING</h4>
+                                                <h4 class="text-center py-1" style="color: gold;">BOOKING</h4>
                                             </div>
                                         </a>
                                     </div>
@@ -373,7 +390,7 @@
                                     <td style="border:1px solid white">이벤트</td>
                                 </tr>
                                 <tr>
-                                    <td class="member">2인</td>
+                                    <td class="member" style="color:gold">2인</td>
                                     <td id="price_2"></td>
                                     <td id="card_2"></td>
                                     <td rowspan="7" class="pt-5">
@@ -381,32 +398,32 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="member">3인</td>
+                                    <td class="member" style="color:gold">3인</td>
                                     <td id="price_3"></td>
                                     <td id="card_3"></td>
                                 </tr>
                                 <tr>
-                                <td class="member">4인</td>
+                                <td class="member" style="color:gold">4인</td>
                                     <td id="price_4"></td>
                                     <td id="card_4"></td>
                                 </tr>
                                 <tr>
-                                    <td class="member">5인</td>
+                                    <td class="member" style="color:gold">5인</td>
                                     <td id="price_5"></td>
                                     <td id="card_5"></td>
                                 </tr>
                                 <tr>
-                                    <td class="member">6인</td>
+                                    <td class="member" style="color:gold">6인</td>
                                     <td id="price_6"></td>
                                     <td id="card_6"></td>
                                 </tr>
                                 <tr>
-                                    <td class="member">중고생</td>
+                                    <td class="member" style="color:gold">중고등</td>
                                     <td id="price_m"></td>
                                     <td id="card_m"></td>
                                 </tr>
                                 <tr>
-                                    <td class="member">초등생</td>
+                                    <td class="member" style="color:gold">초등생</td>
                                     <td id="price_e"></td>
                                     <td id="card_e"></td>
                                 </tr>
@@ -440,7 +457,7 @@
         <footer class="py-3 d-block d-sm-none" style="background-color:rgb(51,51,51);">
             <p style="font-size:0.8rem" class="text-white text-center">
                 <b style="font-size:1.1rem">STORE INFO.</b><br>
-                <b style="font-size:1.8rem"><a style="color:yellow;text-decoration:none;" href="tel: {{ i.Tel }}" class="tel">{{ i.Tel }}<br>
+                <b style="font-size:1.8rem"><a style="color:gold;text-decoration:none;" href="tel: {{ i.Tel }}" class="tel">{{ i.Tel }}<br>
                 </a></b>
                 <span>번호 클릭 시 전화 연결됩니다.</span><br /><br />
                 <span style="font-size:1.2rem">계좌이체<br />

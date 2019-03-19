@@ -12,7 +12,7 @@ class BookingForm(forms.ModelForm):
             'depositWay',
         ]
         widgets = {
-            'name':forms.TextInput(
+            'name': forms.TextInput(
                 attrs={
                     'style': 'width:100%',
                     'class': 'form-control',
