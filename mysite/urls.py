@@ -2,9 +2,6 @@ from django.contrib import admin
 from django.urls import re_path, include
 from . import views
 
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     re_path(r'^$', views.main, name='main'),
@@ -28,5 +25,5 @@ for (prefix_url, root) in static_list:
     if '://' not in prefix_url: # 외부 서버에서 서빙하는 것이 아니라면
         prefix_url = prefix_url.lstrip('/')
         url_pattern = r'^' + prefix_url + r'(?P<path>.+)'
-        pattern = url(url_pattern, static.serve, kwargs={'document_root': root})
+        pattern = re_path(url_pattern, static.serve, kwargs={'document_root': root})
         urlpatterns.append(pattern)
