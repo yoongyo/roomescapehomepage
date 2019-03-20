@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
                     'style': 'height: 30px; margin-bottom:15px; width:300px;',
                     'autocomplete': 'off'
                 }
-            )
+            ),
         }
 
 class CommentForm(forms.ModelForm):

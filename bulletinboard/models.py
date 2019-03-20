@@ -7,8 +7,7 @@ class Bulletinboard(models.Model):
         writer = models.CharField(max_length=15)
         title = models.CharField(max_length=200)
         text = FroalaField(theme='dark')
-        created_date = models.DateTimeField(
-                default=timezone.now)
+        created_date = models.DateField(default=timezone.now)
         published_date = models.DateTimeField( 
                 blank=True, null=True)
         secret = models.BooleanField()
