@@ -10,7 +10,6 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^theme/', include(('theme.urls', 'theme'), namespace='theme')),
     re_path(r'^information/', include(('information.urls', 'information'), namespace='information')),
-    re_path(r'^bulletinboard/', include(('bulletinboard.urls', 'buelletinboard'), namespace='bulletinboard')),
     re_path(r'^FAQ/', include(('FAQ.urls', 'FAQs'), namespace='FAQ'))
 ]
 

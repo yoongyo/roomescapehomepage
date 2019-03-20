@@ -390,7 +390,17 @@
             <!-- 모바일 버전 -->
             <div class="d-block d-sm-none my-4">
                 <h3 class="text-center" style="color:gold">{{ theme.name }}</h3>
-                <h5 class="text-center text-white">{{ theme.genre }}</h5>
+                <h5 class="text-center text-white">({{ theme.genre }})</h5>
+                <p style="font-size:1.4rem;" class="text-white text-center">난이도 :
+                    <span style="color:gold">
+                        {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                        {% if theme.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                        {% if theme.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                        {% if theme.difficulty == 4 %} ★★★★☆☆{% endif %}
+                        {% if theme.difficulty == 5 %} ★★★★★☆{% endif %}
+                        {% if theme.difficulty == 6 %} ★★★★★★{% endif %}
+                    </span>
+                </p>
                 <p class="text-center">
                     <img class="text-center" width="95%" height="410px" src="{{ theme.image.url }}">
                 </p>

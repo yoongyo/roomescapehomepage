@@ -159,8 +159,8 @@
             .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
         </style>
     </head>
-    <body>
     {% load static %}
+    <body>
     {% for i in info %}
         <!-- PC 버전 -->
         <div class="d-none d-sm-block">
@@ -199,62 +199,73 @@
             </div>
             <div class="row my-1">
                 <div class="p-0 text-center col-3">
-                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'information:information' %}" style="font-size:0.8rem">이용안내<span class="sr-only"></span></a>
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'information:information' %}" style="font-size:1rem">이용안내<span class="sr-only"></span></a>
                 </div>
                 <div class="p-0 text-center col-3">
-                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'theme:theme_info' %}" style="font-size:0.8rem">테마</a>
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'theme:theme_info' %}" style="font-size:1rem">테마</a>
                 </div>
                 <div class="p-0 text-center col-3">
-                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'theme:theme_list' today %}" style="font-size:0.8rem">예약하기 </a>
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'theme:theme_list' today %}" style="font-size:1rem">예약하기 </a>
                 </div>
                 <div class="p-0 text-center col-3">
-                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'FAQ:FAQs' %}" style="font-size:0.8rem">FAQ</a>
+                    <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'FAQ:FAQs' %}" style="font-size:1rem">FAQ</a>
                 </div>
             </div>
         </div>
 
+
         <!-- 메인 이미지 carousel -->
-        <div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-2" data-slide-to="1"></li>
-                <li data-target="#carousel-example-2" data-slide-to="2"></li>
-            </ol>
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="view">
-                        <img class="d-block w-100" src="{{ i.image1.url }}" alt="First slide">
-                        <div class="mask rgba-black-light"></div>
+        <!-- PC 버전 -->
+        <div class="d-none d-sm-block">
+            <div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                </ol>
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="view">
+                            <img class="d-block w-100" src="{{ i.image1.url }}" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                <!--Mask color-->
-                    <div class="view">
-                        <img class="d-block w-100" src="{{ i.image2.url }}" alt="Second slide">
-                        <div class="mask rgba-black-light"></div>
-                    </div>
-                </div>
-                <div class="carousel-item">
+                    <div class="carousel-item">
                     <!--Mask color-->
-                    <div class="view">
-                        <img class="d-block w-100" src="{{ i.image3.url }}" alt="Third slide">
-                        <div class="mask rgba-black-light"></div>
+                        <div class="view">
+                            <img class="d-block w-100" src="{{ i.image2.url }}" alt="Second slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!--Mask color-->
+                        <div class="view">
+                            <img class="d-block w-100" src="{{ i.image3.url }}" alt="Third slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
                     </div>
                 </div>
+              <!--/.Slides-->
+              <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
             </div>
-          <!--/.Slides-->
-          <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+        </div>
+
+        <!-- 모바일 버전 -->
+        <div class="d-block d-sm-none">
+            <a href="{% url 'theme:theme_list' today %}">
+                <img width="100%" src="{{ i.image1.url }}">
             </a>
-            <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
         </div>
 
         <!-- 주의사항 -->
@@ -306,7 +317,8 @@
 
 
         <!-- 테마룸 예약하기 -->
-        <div class="container-fluid py-5" style="background-color:black">
+        <!-- PC 버전 -->
+        <div class="d-none d-sm-block container-fluid py-5" style="background-color:black">
             <div class="container px-5 mb-4">
                 <h2 class="text-center pb-4" style="color:gold">테마룸 예약하기</h2>
                 <div class="row">
@@ -360,6 +372,38 @@
             </div>
         </div>
 
+        <!-- 모바일 버전 -->
+        <div class="d-block d-sm-none container fluid py-4" style="background-color:black">
+            <h2 class="text-center pb-4" style="color:gold">테마룸 예약하기</h2>
+            <div class="row">
+                {% for i in theme %}
+                <div class="col-6 p-0">
+                    <a href="{% url 'theme:theme_booking' today i.name %}">
+                        <div class="py-1" style="background-color:rgb(51,51,51);border:2px solid black">
+                            <h4 class="text-center text-white m-0 p-1">{{ i.name }}</h4>
+                            <img width="100%" src="{{ i.image.url }}">
+                            <p class="text-center text-white m-0 p-2" style="font-size:0.9rem">
+                                난이도 :  {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                                {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                                {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
+                                {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
+                                {% if i.difficulty == 6 %} ★★★★★★{% endif %}<br>
+                                장르 : {{ i.genre }}<br>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <!-- 짝수 홀수 조절 -->
+                {% for i in info %}
+                    {% if i.roomNum|divisibleby:2 %}
+                    {% else %}
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
 
         <!-- 이용요금-->
         <div class="d-none d-sm-block container-fluid py-5" style="background-color:rgb(51,51,51);">

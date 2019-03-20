@@ -130,7 +130,7 @@
     <h4 class="d-none d-sm-block text-center pb-4" style="color:rgb(171,171,171);">테마 예약</h4>
     <!-- 모바일 버전 -->
     <h4 class="d-block d-sm-none text-center text-white">BOOKING</h4>
-    <h5 class="d-block d-sm-none text-center p-2" style="color:rgb(171,171,171);">테마 예약</h5>
+    <h5 class="d-block d-sm-none text-center mb-4" style="color:rgb(171,171,171);">테마 예약</h5>
 
     <div class="row">
         <div class="col-md-2"></div>
@@ -309,7 +309,17 @@
             {% for i in theme %}
             <div class="d-block d-sm-none my-4">
                 <h3 class="text-center" style="color:gold">{{ i.name }}</h3>
-                <h5 class="text-center text-white">{{ i.genre }}</h5>
+                <h5 class="text-center text-white">({{ i.genre }})</h5>
+                <p style="font-size:1.4rem;" class="text-white text-center">난이도 :
+                    <span style="color:gold">
+                        {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                        {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                        {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                        {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
+                        {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
+                        {% if i.difficulty == 6 %} ★★★★★★{% endif %}
+                    </span>
+                </p>
                 <p class="text-center">
                     <img class="text-center" width="95%" height="410px" src="{{ i.image.url }}">
                 </p>

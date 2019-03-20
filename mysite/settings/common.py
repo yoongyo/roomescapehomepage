@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'theme',
     'information',
     'froala_editor',
-    'bulletinboard',
     'FAQ',
 ]
 
