@@ -22,6 +22,8 @@ class Theme(models.Model):
     time8 = models.CharField(max_length=10)
     time9 = models.CharField(max_length=10)
     time10 = models.CharField(max_length=10)
+    time11 = models.CharField(max_length=10, blank=True, null=True)
+    time12 = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):
         return self.name

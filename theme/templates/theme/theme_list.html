@@ -111,6 +111,24 @@
                 $(".time10date_p2").attr("style", "color: #555; margin:0");
                 $(".time10date_p2").html("예약 불가");
             }
+            var v11 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time11 }}"+":00";
+            var date11 = new Date(v10);
+            if (today.getTime() > date11.getTime()){
+                $(".time11date_a").attr("href", "#");
+                $(".time11date_div").attr("style", "border:1px solid #555 !important");
+                $(".time11date_p").attr("style", "color: #555 !important; margin:0");
+                $(".time11date_p2").attr("style", "color: #555; margin:0");
+                $(".time11date_p2").html("예약 불가");
+            }
+            var v12 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time12 }}"+":00";
+            var date12 = new Date(v10);
+            if (today.getTime() > date10.getTime()){
+                $(".time12date_a").attr("href", "#");
+                $(".time12date_div").attr("style", "border:1px solid #555 !important");
+                $(".time12date_p").attr("style", "color: #555 !important; margin:0");
+                $(".time12date_p2").attr("style", "color: #555; margin:0");
+                $(".time12date_p2").html("예약 불가");
+            }
         {% endfor %}
     });
 
@@ -179,7 +197,11 @@
                     <div class="col-8">
                         <h1 style="color:gold">{{ i.name }}</h1>
                         <h5 class="text-white mb-3">인원 : 최대 {{ i.numPeople }}명</h5>
-                        <div class="mb-5">
+                        {% if i.time11 %}
+                        <div class="mb-1">
+                            {% else %}
+                            <div class="mb-5">
+                            {% endif %}
                             <span style="font-size:18px;" class="text-white">난이도 :
                                 <span style="color:gold">
                                     {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
@@ -213,7 +235,7 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="row mt-4">
+                        <div class="row">
                             <div class="p-2" style="width:20%">
                                 <a class="time1date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time1 %}" style="text-decoration:none;">
                                     <div class="time1date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
@@ -296,6 +318,26 @@
                                     </div>
                                 </a>
                             </div>
+                            {% if i.time11 %}
+                            <div class="py-2 px-2" style="width:20%">
+                                <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time11 %}" style="text-decoration:none;">
+                                    <div class="time11date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time11date_p text-center">{{ i.time11 }}</p>
+                                        <p style="margin:0" class="time11date_p2 p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.time12 %}
+                            <div class="py-2 px-2" style="width:20%">
+                                <a class="time12date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time12 %}" style="text-decoration:none;">
+                                    <div class="time12date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time12date_p text-center">{{ i.time12 }}</p>
+                                        <p style="margin:0" class="time12date_p2 p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-4">
@@ -324,7 +366,7 @@
                 <p class="text-center">
                     <img class="text-center" width="95%" height="410px" src="{{ i.image.url }}">
                 </p>
-                <div class="row">
+                <div class="row d-flex justify-content-center">
                     <div class="p-2 col-6" >
                         <a class="time1date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time1 %}" style="text-decoration:none;">
                             <div class="time1date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
@@ -409,6 +451,26 @@
                             </div>
                         </a>
                     </div>
+                    {% if i.time11 %}
+                    <div class="p-2 col-6" style="width:20%">
+                        <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time11 %}" style="text-decoration:none;">
+                            <div class="time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                <p style="margin:0" class="time11date_p text-center">{{ i.time11 }}</p>
+                                <p style="margin:0" class="time11date_p2 p2 text-center">예약 가능</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if i.time12 %}
+                    <div class="p-2 col-6" style="width:20%">
+                        <a class="time12date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time12 %}" style="text-decoration:none;">
+                            <div class="time12date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                <p style="margin:0" class="time12date_p text-center">{{ i.time12 }}</p>
+                                <p style="margin:0" class="time12date_p2 p2 text-center">예약 가능</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
