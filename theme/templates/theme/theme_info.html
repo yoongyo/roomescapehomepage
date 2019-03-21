@@ -54,7 +54,8 @@
                             </div>
                             <h5 class="text-white">진행시간 : 60분  &nbsp;&nbsp;&nbsp;  참여인원 : {{ i.numPeople }}</h5>
                             <h6 class="text-white">
-                                난이도 : <span style="color:gold">{% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                난이도 : <span style="color:gold">
+                                {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
                                 {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
                                 {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
                                 {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
@@ -62,7 +63,10 @@
                                 {% if i.difficulty == 6 %} ★★★★★★{% endif %}
                                 </span>
                                 &nbsp;&nbsp;
-                                공포도 : <span style="color:gold">{% if i.horror == 2 %} ●●○○○○{% endif %}
+                                공포도 : <span style="color:gold">
+                                {% if i.horror == 0 %} ○○○○○○{% endif %}
+                                {% if i.horror == 1 %} ●○○○○○{% endif %}
+                                {% if i.horror == 2 %} ●●○○○○{% endif %}
                                 {% if i.horror == 3 %} ●●●○○○{% endif %}
                                 {% if i.horror == 4 %} ●●●●○○{% endif %}
                                 {% if i.horror == 5 %} ●●●●●○{% endif %}
@@ -113,6 +117,7 @@
                                 {% if i.difficulty == 6 %} ★★★★★★{% endif %}</span></h5>
                         <h6 class="text-white text-center">공포도 :
                             <span style="color:gold">
+                                {% if i.horror == 0 %} ○○○○○○{% endif %}
                                 {% if i.horror == 1 %} ●○○○○○{% endif %}
                                 {% if i.horror == 2 %} ●●○○○○{% endif %}
                                 {% if i.horror == 3 %} ●●●○○○{% endif %}

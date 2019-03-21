@@ -276,7 +276,9 @@
                                 &nbsp;&nbsp;&nbsp;
                             </span>
                             <span style="font-size:18px;"class="text-white">공포도 :
-                                <span style="color:gold">{% if theme.horror == 1 %} ●○○○○○{% endif %}
+                                <span style="color:gold">
+                                    {% if theme.horror == 0 %} ○○○○○○{% endif %}
+                                    {% if theme.horror == 1 %} ●○○○○○{% endif %}
                                     {% if theme.horror == 2 %} ●●○○○○{% endif %}
                                     {% if theme.horror == 3 %} ●●●○○○{% endif %}
                                     {% if theme.horror == 4 %} ●●●●○○{% endif %}
