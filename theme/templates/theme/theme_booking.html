@@ -88,6 +88,20 @@
                 $(".time10date_p2").attr("style", "color: #555; margin:0");
                 $(".time10date_p2").html("예약 불가");
             {% endif %}
+            {% if i.time == theme.time11 %}
+                $(".time11date_a").attr("href", "#");
+                $(".time11date_div").attr("style", "border:1px solid #555 !important");
+                $(".time11date_p").attr("style", "color: #555 !important; margin:0");
+                $(".time11date_p2").attr("style", "color: #555; margin:0");
+                $(".time11date_p2").html("예약 불가");
+            {% endif %}
+            {% if i.time == theme.time12 %}
+                $(".time12date_a").attr("href", "#");
+                $(".time12date_div").attr("style", "border:1px solid #555 !important");
+                $(".time12date_p").attr("style", "color: #555 !important; margin:0");
+                $(".time12date_p2").attr("style", "color: #555; margin:0");
+                $(".time12date_p2").html("예약 불가");
+            {% endif %}
         {% endfor %}
      });
 
@@ -199,6 +213,28 @@
             $(".time10date_p").attr("style", "color: #555 !important; margin:0");
             $(".time10date_p2").attr("style", "color: #555; margin:0");
             $(".time10date_p2").html("예약 불가");
+        }
+    });
+    $(function() {
+        var date = new Date({{ year }}, {{ month }}, {{ day }}, {{ time11_hour }}, {{ time11_min }},0);
+        var today = new Date();
+        if (today.getTime() > date.getTime()){
+            $(".time11date_a").attr("href", "#");
+            $(".time11date_div").attr("style", "border:1px solid #555 !important");
+            $(".time11date_p").attr("style", "color: #555 !important; margin:0");
+            $(".time11date_p2").attr("style", "color: #555; margin:0");
+            $(".time11date_p2").html("예약 불가");
+        }
+    });
+    $(function() {
+        var date = new Date({{ year }}, {{ month }}, {{ day }}, {{ time12_hour }}, {{ time12_min }},0);
+        var today = new Date();
+        if (today.getTime() > date.getTime()){
+            $(".time12date_a").attr("href", "#");
+            $(".time12date_div").attr("style", "border:1px solid #555 !important");
+            $(".time12date_p").attr("style", "color: #555 !important; margin:0");
+            $(".time12date_p2").attr("style", "color: #555; margin:0");
+            $(".time12date_p2").html("예약 불가");
         }
     });
 

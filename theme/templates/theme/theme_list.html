@@ -112,7 +112,7 @@
                 $(".time10date_p2").html("예약 불가");
             }
             var v11 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time11 }}"+":00";
-            var date11 = new Date(v10);
+            var date11 = new Date(v11);
             if (today.getTime() > date11.getTime()){
                 $(".time11date_a").attr("href", "#");
                 $(".time11date_div").attr("style", "border:1px solid #555 !important");
@@ -121,7 +121,7 @@
                 $(".time11date_p2").html("예약 불가");
             }
             var v12 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time12 }}"+":00";
-            var date12 = new Date(v10);
+            var date12 = new Date(v12);
             if (today.getTime() > date10.getTime()){
                 $(".time12date_a").attr("href", "#");
                 $(".time12date_div").attr("style", "border:1px solid #555 !important");
