@@ -159,8 +159,8 @@
             .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
         </style>
     </head>
-    {% load static %}
     <body>
+    {% load static %}
     {% for i in info %}
         <!-- PC 버전 -->
         <div class="d-none d-sm-block">
@@ -192,10 +192,10 @@
 
         <!-- 모바일 버전 -->
         <div class="p-2 d-block d-sm-none" style="background-color:rgb(51,51,51);">
-            <div class="row text-center mb-3">
-                <a class=text-center" href="{% url 'main' %}">
-                    <img width="70%" src="{{ i.logo.url }}">
-                </a>
+            <div class="text-center">
+            <a class="text-center" href="{% url 'main' %}">
+                <img src="{{ i.logo.url }}">
+            </a>
             </div>
             <div class="row my-1">
                 <div class="p-0 text-center col-3">
@@ -378,7 +378,7 @@
             <div class="row">
                 {% for i in theme %}
                 <div class="col-6 p-0">
-                    <a href="{% url 'theme:theme_booking' today i.name %}">
+                    <a href="{% url 'theme:theme_booking' today i.name %}" style="text-decoration:none;">
                         <div class="py-1" style="background-color:rgb(51,51,51);border:2px solid black">
                             <h4 class="text-center text-white m-0 p-1">{{ i.name }}</h4>
                             <img width="100%" src="{{ i.image.url }}">
