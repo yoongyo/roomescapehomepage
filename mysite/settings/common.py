@@ -1,4 +1,8 @@
 import os
+import json
+from django.apps import apps as django_apps
+from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(ROOT_DIR)
@@ -85,7 +89,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
@@ -97,6 +100,11 @@ USE_L10N = True
 USE_TZ = True
 
 DATE_INPUT_FORMATS = ['%y-%m-d%']
+
+FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier','code_view', 'colors', 'draggable', 'emoticons',
+        'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
+        'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
+        'url', 'video')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mysite', 'media')

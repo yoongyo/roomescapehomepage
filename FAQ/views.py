@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Qna
+from .models import FAQ
 
 import datetime
 from information.models import Information
@@ -10,10 +10,10 @@ def FAQs(request):
     nowDate = now.strftime('%Y-%m-%d')
     print(nowDate)
 
-    qs =  Qna.objects.all()
+    faq = FAQ.objects.all()
 
     return render(request, 'FAQ.html',{
-        'FAQ_list': qs,
+        'faq': faq,
         'today': nowDate,
         'info': info,
     })

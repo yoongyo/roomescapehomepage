@@ -1,73 +1,139 @@
 {% extends 'base.html' %}
 {% block content %}
 <script>
-    function evn(){
-        {% for i in FAQ_list %}
-        if($("#a{{ i.pk }}").css("display") == "none"){
-            $("#a{{ i.pk }}").show();
-        }else{
-            $("#a{{ i.pk }}").hide();
-        }
-        {% endfor %}
+    {% for i in faq %}
+    function toggle{{ i.pk }}(){
+        $(".{{ i.pk }}").toggle();
+    }
+    {% endfor %}
+    function togle2(){
+        $(".qna2").toggle();
+        $(".qna1").hide();
+        $(".qna3").hide();
+        $(".qna4").hide();
+        $(".qna5").hide();
+        $(".qna6").hide();
+        $(".qna7").hide();
+        $(".qna8").hide();
+    }function togle3(){
+        $(".qna3").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna4").hide();
+        $(".qna5").hide();
+        $(".qna6").hide();
+        $(".qna7").hide();
+        $(".qna8").hide();
+    }function togle4(){
+        $(".qna4").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna3").hide();
+        $(".qna5").hide();
+        $(".qna6").hide();
+        $(".qna7").hide();
+        $(".qna8").hide();
+    }function togle5(){
+        $(".qna5").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna3").hide();
+        $(".qna4").hide();
+        $(".qna6").hide();
+        $(".qna7").hide();
+        $(".qna8").hide();
+    }function togle6(){
+        $(".qna6").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna3").hide();
+        $(".qna4").hide();
+        $(".qna5").hide();
+        $(".qna7").hide();
+        $(".qna8").hide();
+    }function togle7(){
+        $(".qna7").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna3").hide();
+        $(".qna4").hide();
+        $(".qna5").hide();
+        $(".qna6").hide();
+        $(".qna8").hide();
+    }function togle8(){
+        $(".qna8").toggle();
+        $(".qna1").hide();
+        $(".qna2").hide();
+        $(".qna3").hide();
+        $(".qna4").hide();
+        $(".qna5").hide();
+        $(".qna6").hide();
+        $(".qna7").hide();
     }
 </script>
+<!-- PC -->
 <div class="d-none d-sm-block container-fluid py-3" style="background-color:black;">
     <h1 class="text-center text-white mt-4">FAQ</h1>
-    <h4 class="text-center" style="color:rgb(171,171,171);">자주묻는 질문</h4>
-    <!--{% for i in FAQ_list %}-->
-    <!--<div class="row">-->
-        <!--<div class="col-3"></div>-->
-        <!--<div class="col-6">-->
-            <!--<div class="dropdown" style="border:1px solid gold">-->
-                <!--<button style="width:100%" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">-->
-                    <!--<div class="d-flex justify-content-between">-->
-                    <!--<span style="font-size:2rem;">Q. </span>-->
-                    <!--<span style="font-size:2rem;">{{ i.title }}</span>-->
-                    <!--</div>-->
-                <!--</button>-->
-                <!--<div style="width:100%;background-color:black" class="dropdown-menu">-->
-                    <!--<p class="text-white">{{ i.text }}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-3"></div>-->
-    <!--</div>-->
-    <!--{% endfor %}-->
-
+    <h4 class="text-center mb-5" style="color:rgb(171,171,171);">자주묻는 질문</h4>
+    {% for i in faq %}
+    <div class="row mb-3">
+        <div class="col-2"></div>
+        <div style="border:1px solid gold" class="col-8 p-0">
+            <div class="container">
+                <div class="row">
+                    <div style="background-color:gray;" class="col-1 p-0">
+                        <h2 style="color:gold" class="text-center m-0 font-weight-bold">Q.</h2>
+                    </div>
+                    <div class="col-10 p-0 text-white">
+                        <h5 class="my-2 ml-3">{{ i.question }}</h5>
+                    </div>
+                    <div class="col-1 p-0">
+                        <a href="javascript:toggle{{ i.pk }}();"><button style="width:100%;height:100%;border-color:gold" type="button" class="btn btn-outline-light">▼</button></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 px-0">
+                        <div class="{{ i.pk }} p-4" style="display:none;background-color:white;">
+                            A.
+                            <br>
+                            {{ i.answer|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    {% endfor %}
 </div>
 
+<!-- 모바일 -->
 <div class="d-block d-sm-none container-fluid py-3" style="background-color:black;">
-    <h4 class="text-center text-white ">FAQ</h4>
-    <h5 class="text-center mb-4" style="color:rgb(171,171,171);">자주묻는 질문</h5>
-    <!--{% for i in FAQ_list %}-->
-        <!--<div class="row" style="border:1px solid gray;">-->
-            <!--<div class="col-2" style="background-color:gray;">-->
-                <!--<h4 style="color:gold;" class="text-center m-1">Q.</h4>-->
-            <!--</div>-->
-            <!--<div class="col-8">-->
-                <!--<h5 class="text-white m-2">{{ i.title }}</h5>-->
-            <!--</div>-->
-            <!--<div class="col-2">-->
-                <!--<a href="javascript:evn();" style="text-decoration:none"><button type="button" class="btn btn-outline-secondary ">▼</button></a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<div class="col-12 p-0">-->
-                <!--<div style="background-color:gray;display:none;" class="eventID">-->
-                    <!--<h6 class="text-black px-3 py-3">{{ i.text }}</h6> &lt;!&ndash; 내용 &ndash;&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="dropdown">-->
-          <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--Dropdown button-->
-          <!--</button>-->
-          <!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-            <!--<a class="dropdown-item" href="#">Action</a>-->
-            <!--<a class="dropdown-item" href="#">Another action</a>-->
-            <!--<a class="dropdown-item" href="#">Something else here</a>-->
-          <!--</div>-->
-        <!--</div>-->
-    <!--{% endfor %}-->
+    <h1 class="text-center text-white mt-4">FAQ</h1>
+    <h4 class="text-center mb-5" style="color:rgb(171,171,171);">자주묻는 질문</h4>
+    <div class="container">
+        {% for i in faq %}
+        <div class="row" style="border:1px solid gold">
+            <div style="background-color:gray;" class="col-2 p-0">
+                <h4 style="color:gold;line-height:60px" class="text-center m-0 font-weight-bold">Q.</h4>
+            </div>
+            <div class="col-8 p-0 text-white">
+                <h6 class="py-3 px-2">{{ i.question }}</h6>
+            </div>
+            <div class="col-2 p-0">
+                <a href="javascript:toggle{{ i.pk }}();"><button style="width:100%;height:100%;border-color:gold" type="button" class="btn btn-outline-light">▼</button></a>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 px-0">
+                <div class="{{ i.pk }} p-4" style="display:none;background-color:white;">
+                    A.
+                    <br>
+                    {{ i.answer|safe }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

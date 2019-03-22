@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Qna
+from .models import FAQ
 
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = ['question', 'answer']
 
-admin.site.register( Qna, FAQAdmin)
+admin.site.register(FAQ, FAQAdmin)

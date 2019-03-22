@@ -380,15 +380,15 @@
                 <div class="col-6 p-0">
                     <a href="{% url 'theme:theme_booking' today i.name %}" style="text-decoration:none;">
                         <div class="py-1" style="background-color:rgb(51,51,51);border:2px solid black">
-                            <h4 class="text-center text-white m-0 p-1">{{ i.name }}</h4>
+                            <h4 class="text-center m-0 p-1 text-white">{{ i.name }}</h4>
                             <img width="100%" height="273px" src="{{ i.image.url }}">
-                            <p class="text-center text-white m-0 p-2" style="font-size:0.9rem">
-                                난이도 :  {% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                            <p class="text-center m-0 p-2 text-white" style="font-size:0.9rem">
+                                난이도 :  <span style="color:gold">{% if i.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
                                 {% if i.difficulty == 2 %} ★★☆☆☆☆{% endif %}
                                 {% if i.difficulty == 3 %} ★★★☆☆☆{% endif %}
                                 {% if i.difficulty == 4 %} ★★★★☆☆{% endif %}
                                 {% if i.difficulty == 5 %} ★★★★★☆{% endif %}
-                                {% if i.difficulty == 6 %} ★★★★★★{% endif %}<br>
+                                {% if i.difficulty == 6 %} ★★★★★★{% endif %}</span><br>
                                 장르 : {{ i.genre }}<br>
                             </p>
                         </div>
