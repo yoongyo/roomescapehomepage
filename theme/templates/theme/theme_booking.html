@@ -215,6 +215,7 @@
             $(".time10date_p2").html("예약 불가");
         }
     });
+    {% if theme.time11 %}
     $(function() {
         var date = new Date({{ year }}, {{ month }}, {{ day }}, {{ time11_hour }}, {{ time11_min }},0);
         var today = new Date();
@@ -226,6 +227,8 @@
             $(".time11date_p2").html("예약 불가");
         }
     });
+    {% endif %}
+    {% if theme.time12 %}
     $(function() {
         var date = new Date({{ year }}, {{ month }}, {{ day }}, {{ time12_hour }}, {{ time12_min }},0);
         var today = new Date();
@@ -237,14 +240,15 @@
             $(".time12date_p2").html("예약 불가");
         }
     });
+    {% endif %}
 
-  function moveToURL(url){
-     document.location.href= url;
-  }
-  $(function (){
-    var theme = "{{ theme.name }}";
-    $("#selectBox").val("{% url 'theme:theme_booking' date theme.name %}").prop("selected", true);
-  });
+    function moveToURL(url){
+        document.location.href= url;
+    }
+    $(function (){
+        var theme = "{{ theme.name }}";
+        $("#selectBox").val("{% url 'theme:theme_booking' date theme.name %}").prop("selected", true);
+    });
 </script>
 <div class="container-fluid py-3" style="background-color:black">
     <!-- PC 버전 -->
@@ -301,9 +305,9 @@
                         <h5 class="text-white mb-3">인원 : 최대 {{ theme.numPeople }}명</h5>
                         {% if theme.time11 %}
                         <div class="mb-1">
-                            {% else %}
-                            <div class="mb-5">
-                            {% endif %}
+                        {% else %}
+                        <div class="mb-5">
+                        {% endif %}
                             <span style="font-size:18px;" class="text-white">난이도 :
                                 <span style="color:gold">
                                     {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
@@ -421,7 +425,7 @@
                                     </div>
                                 </a>
                             </div>
-                            {% if theme.time11 %}
+                        {% if theme.time11 %}
                             <div class="py-2 px-2" style="width:20%">
                                 <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time11 %}" style="text-decoration:none;">
                                     <div class="time11date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">

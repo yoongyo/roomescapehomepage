@@ -122,7 +122,7 @@
             }
             var v12 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time12 }}"+":00";
             var date12 = new Date(v12);
-            if (today.getTime() > date10.getTime()){
+            if (today.getTime() > date12.getTime()){
                 $(".time12date_a").attr("href", "#");
                 $(".time12date_div").attr("style", "border:1px solid #555 !important");
                 $(".time12date_p").attr("style", "color: #555 !important; margin:0");

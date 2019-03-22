@@ -76,6 +76,18 @@ def theme_booking(request, date, theme):
     time9_min = int(theme.time9.split(':')[1])
     time10_hour = int(theme.time10.split(':')[0])
     time10_min = int(theme.time10.split(':')[1])
+    if theme.time11:
+        time11_hour = int(theme.time11.split(':')[0])
+        time11_min = int(theme.time11.split(':')[1])
+    else:
+        time11_hour = ''
+        time11_min = ''
+    if theme.time12:
+        time12_hour = int(theme.time12.split(':')[0])
+        time12_min = int(theme.time12.split(':')[1])
+    else:
+        time12_hour = ''
+        time12_min = ''
     now = datetime.datetime.now()
     nowDate = now.strftime('%Y-%m-%d')
     date = date
@@ -109,6 +121,10 @@ def theme_booking(request, date, theme):
         'time9_min': time9_min,
         'time10_hour': time10_hour,
         'time10_min': time10_min,
+        'time11_hour': time11_hour,
+        'time11_min': time11_min,
+        'time12_hour': time12_hour,
+        'time12_min': time12_min,
     })
 
 
