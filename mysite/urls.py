@@ -10,7 +10,8 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^theme/', include(('theme.urls', 'theme'), namespace='theme')),
     re_path(r'^information/', include(('information.urls', 'information'), namespace='information')),
-    re_path(r'^FAQ/', include(('FAQ.urls', 'FAQs'), namespace='FAQ'))
+    re_path(r'^FAQ/', include(('FAQ.urls', 'FAQs'), namespace='FAQ')),
+    re_path(r'^booking/', include(('booking.urls', 'booking'), namespace='booking'))
 ]
 
 
@@ -19,6 +20,11 @@ static_list = [
     (settings.MEDIA_URL, settings.MEDIA_ROOT),
 ]
 
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        re_path(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
 
 for (prefix_url, root) in static_list:
     if '://' not in prefix_url: # 외부 서버에서 서빙하는 것이 아니라면

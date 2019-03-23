@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>예약자 관리</title>
+    <!-- 부트스트랩 모바일 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 부트스트랩 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:black;">
+    <!-- PC 버전 -->
+    <div class="d-none d-sm-block container-fluid py-5 pb-5" style="background-color:black;height:100%;">
+        <div class="container">
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'booking:booking_list' %}" role="button" class="btn btn-secondary">전체 예약 관리</a>
+            </div>
+            <h1 class="text-white text-center m-3">오늘 예약자 관리</h1>
+            <table class="table text-white">
+                <thead>
+                <tr class="text-center">
+                    <th>예약자</th>
+                    <th>예약일</th>
+                    <th>예약시간</th>
+                    <th>테마</th>
+                    <th>인원</th>
+                    <th>전화번호</th>
+                    <th>결제방법</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in todaybooking %}
+                <tr class="text-center">
+                    <td class="text-center">{{ i.name }}</td>
+                    <td class="text-center">{{ i.date }}</td>
+                    <td class="text-center">{{ i.time }}</td>
+                    <td class="text-center">{{ i.theme }}</td>
+                    <td class="text-center">{{ i.numPeople }}</td>
+                    <td class="text-center">{{ i.phone }}</td>
+                    <td class="text-center">{{ i.depositWay }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 모바일 버전 -->
+    <div class="d-block d-sm-none container-fluid py-3 pb-5" style="background-color:black;height:100%;">
+        <div class="d-flex justify-content-end">
+            <a href="{% url 'booking:booking_list' %}" role="button" class="btn btn-secondary p-0">
+                <p style="font-size:0.7rem" class="m-1">전체 예약 관리</p>
+            </a>
+        </div>
+        <h3 class="text-white text-center m-3">오늘 예약자 관리</h3>
+        <table class="table text-white">
+            <thead>
+                <tr style="font-size:0.6rem">
+                    <th class="text-center px-0 py-1">예약자</th>
+                    <th class="text-center px-0 py-1">예약일</th>
+                    <th class="text-center px-0 py-1">예약시간</th>
+                    <th class="text-center px-0 py-1">테마</th>
+                    <th class="text-center px-0 py-1">인원</th>
+                    <th class="text-center px-0 py-1">전화번호</th>
+                    <th class="text-center px-0 py-1">결제방법</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in todaybooking %}
+                <tr style="font-size:0.4rem">
+                    <td class="text-center px-0 py-1">{{ i.name }}</td>
+                    <td class="text-center px-0 py-1">{{ i.date }}</td>
+                    <td class="text-center px-0 py-1">{{ i.time }}</td>
+                    <td class="text-center px-0 py-1">{{ i.theme }}</td>
+                    <td class="text-center px-0 py-1">{{ i.numPeople }}</td>
+                    <td class="text-center px-0 py-1">
+                        <a class="text-white" style="text-decoration:none;" href="tel: {{ i.phone }}">{{ i.phone }}</a>
+                    </td>
+                    <td class="text-center px-0 py-1">{{ i.depositWay }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

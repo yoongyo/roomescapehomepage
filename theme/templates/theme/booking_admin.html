@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{ form.media }}
+<form class="d-none d-sm-block" name="BookingForm" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-fluid py-5 px-5" style="background-color:black">
+        <h1 class="text-center text-white">BOOKING</h1>
+        <h4 class="text-center pb-5" style="color:rgb(171,171,171);">예약정보 입력</h4>
+        <div class="container px-5">
+            <div clas="container px-5">
+                <div class="container px-5">
+                    <hr class="mx-5" style="border:1px solid white">
+                    <div class="mx-5 px-4">
+                        <table class="text-white table">
+                            <tr style="border-color:black">
+                                <th style="border-color:black" scope="row"><h4>예약일</h4></th>
+                                <td style="border-color:black">{{ date }}</td>
+                            </tr>
+                            <tr style="border-color:black">
+                                <th style="border-color:black" scope="row"><h4>시간</h4></th>
+                                <td style="border-color:black">{{ time }}</td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                            </tr>
+                            <tr style="border-color:black">
+                                <th style="border-color:black" scope="row"><h4>테마명</h4></th>
+                                <td style="border-color:black">{{ theme.name }}</td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                                <td style="border-color:black"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-center mt-5 mb-3">
+                        <input style="font-size:20px;" class="btn btn-secondary text-center px-5" type="submit" value="관리자로 룸 홀딩">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form class="d-block d-sm-none" name="BookingsForm" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-fluid py-3" style="background-color:black">
+        <h4 class="text-center text-white">BOOKING</h4>
+        <h5 class="text-center pb-2" style="color:rgb(171,171,171);">예약정보 입력</h5>
+        <hr style="border:1px solid white">
+        <div class="row">
+            <div class="col-3"><h6 class="text-white">예약일</h6></div>
+            <div class="col-9"><h6 class="text-white">{{ date }}</h6></div>
+        </div>
+
+        <hr style="border:1px solid white">
+        <div class="row">
+            <div class="col-3"><h6 class="text-white">시간</h6></div>
+            <div class="col-9"><h6 class="text-white">{{ time }}</h6></div>
+        </div>
+        <hr style="border:1px solid white">
+        <div class="row">
+            <div class="col-3"><h6 class="text-white">테마명</h6></div>
+            <div class="col-9"><h6 class="text-white">{{ theme.name }}</h6></div>
+        </div>
+        <hr style="border:1px solid white">
+        <div class="text-center m-3">
+            <input class="btn btn-secondary text-center px-5" type="submit" value="관리자로 룸 홀딩">
+        </div>
+    </div>
+</form>
+
+{% endblock %}

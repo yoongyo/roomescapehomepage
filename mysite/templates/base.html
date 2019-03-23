@@ -39,7 +39,7 @@
                             <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'information:information' %}">이용안내<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_info' %}">테마</a>
+                            <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_info' %}">테마소개</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white font-weight-bold mx-2" href="{% url 'theme:theme_list' today %}">예약하기</a>
@@ -55,11 +55,11 @@
         <!-- 모바일 버전 -->
         <div class="d-block d-sm-none" style="background-color:rgb(51,51,51);">
             <div class="text-center">
-            <a class="text-center" href="{% url 'main' %}">
-                <img src="{{ i.logo.url }}">
-            </a>
+                <a class="text-center" href="{% url 'main' %}">
+                    <img src="{{ i.logo.url }}">
+                </a>
             </div>
-            <div class="row">
+            <div class="row pb-1">
                 <div class="p-0 text-center col-3">
                     <a class="m-0 p-0 nav-link text-white font-weight-bold" href="{% url 'information:information' %}" style="font-size:1rem">이용안내<span class="sr-only"></span></a>
                 </div>

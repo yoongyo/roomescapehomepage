@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from .models import Theme, Booking
-from .forms import BookingForm
+from .forms import BookingForm, BookingFormAdmin
 import sys
 sys.path.append('..')
 from information.models import Information
@@ -28,7 +28,7 @@ def theme_list(request, date):
     year = date.split('-')[0]
     month = str(int(date.split('-')[1])-1)
     day = date.split('-')[2]
-    booking = Booking.objects.all()
+    booking = Booking.objects.all().select_related('theme')
     booking = booking.filter(date=date)
     info = Information.objects.all()
     theme = Theme.objects.all()
@@ -164,4 +164,40 @@ def booking_complete(request, date, theme, time):
     return render(request, 'theme/booking_complete.html', {
         'today': nowDate,
         'info': info,
+    })
+
+
+def booking_admin(request, date, theme, time):
+    time = time
+    date = date
+    theme = get_object_or_404(Theme, name=theme)
+    info = Information.objects.all()
+    now = datetime.datetime.now()
+    nowDate = now.strftime('%Y-%m-%d')
+
+    if request.method == 'POST':
+        form = BookingFormAdmin(request.POST, request.FILES)
+        if form.is_valid():
+            admin = form.save(commit=False)
+            admin.theme = theme
+            admin.date = date
+            admin.time = time
+            admin.numPeople = '0'
+            admin.phone = '관리자'
+            admin.name = '관리자'
+            admin.depositWay = '관리자'
+            admin.save()
+            return redirect(admin)
+        else:
+            print(form)
+    else:
+        form = BookingFormAdmin()
+
+    return render(request, 'theme/booking_admin.html', {
+        'theme': theme,
+        'date': date,
+        'time': time,
+        'today': nowDate,
+        'info': info,
+        'form': form,
     })

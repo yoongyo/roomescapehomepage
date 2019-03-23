@@ -41,3 +41,9 @@ class BookingForm(forms.ModelForm):
         }
 
 
+class BookingFormAdmin(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = []
+
+

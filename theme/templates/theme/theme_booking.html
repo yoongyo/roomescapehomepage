@@ -305,9 +305,6 @@
                         <h5 class="text-white mb-3">인원 : 최대 {{ theme.numPeople }}명</h5>
                         {% if theme.time11 %}
                         <div class="mb-1">
-                        {% else %}
-                        <div class="mb-5">
-                        {% endif %}
                             <span style="font-size:18px;" class="text-white">난이도 :
                                 <span style="color:gold">
                                     {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
@@ -343,106 +340,251 @@
                                 &nbsp;&nbsp;&nbsp;
                             </span>
                         </div>
+                        {% else %}
+                        <div class="m-5">
+                            <span style="font-size:18px;" class="text-white">난이도 :
+                                <span style="color:gold">
+                                    {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                                    {% if theme.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                                    {% if theme.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                                    {% if theme.difficulty == 4 %} ★★★★☆☆{% endif %}
+                                    {% if theme.difficulty == 5 %} ★★★★★☆{% endif %}
+                                    {% if theme.difficulty == 6 %} ★★★★★★{% endif %}
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                            </span>
+                            <span style="font-size:18px;"class="text-white">공포도 :
+                                <span style="color:gold">
+                                    {% if theme.horror == 0 %} ○○○○○○{% endif %}
+                                    {% if theme.horror == 1 %} ●○○○○○{% endif %}
+                                    {% if theme.horror == 2 %} ●●○○○○{% endif %}
+                                    {% if theme.horror == 3 %} ●●●○○○{% endif %}
+                                    {% if theme.horror == 4 %} ●●●●○○{% endif %}
+                                    {% if theme.horror == 5 %} ●●●●●○{% endif %}
+                                    {% if theme.horror == 6 %} ●●●●●●{% endif %}
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                            </span>
+                            <span style="font-size:18px;" class="text-white">활동성 :
+                                <span style="color:gold">
+                                    {% if theme.activity == 1 %} ●○○○○○{% endif %}
+                                    {% if theme.activity == 2 %} ●●○○○○{% endif %}
+                                    {% if theme.activity == 3 %} ●●●○○○{% endif %}
+                                    {% if theme.activity == 4 %} ●●●●○○{% endif %}
+                                    {% if theme.activity == 5 %} ●●●●●○{% endif %}
+                                    {% if theme.activity == 6 %} ●●●●●●{% endif %}
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                            </span>
+                        </div>
+                        {% endif %}
                         <div class="row">
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time1date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time1 %}" style="text-decoration:none;">
+                                    <div class="time1date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time1date_p text-center">{{ theme.time1 }}</p>
+                                        <p style="margin:0" class="time1date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time1date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time1 %}" style="text-decoration:none;">
                                     <div class="time1date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time1date_p text-center">{{ theme.time1 }}</p>
                                         <p style="margin:0" class="time1date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time2date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time2 %}" style="text-decoration:none;">
+                                    <div class="time2date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
+                                        <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time2date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time2 %}" style="text-decoration:none;">
                                     <div class="time2date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
                                         <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time3date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time3 %}" style="text-decoration:none;">
+                                    <div class="time3date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);"><p style="margin:0" class="time3date_p text-center">{{ theme.time3 }}</p>
+                                        <p style="margin:0" class="time3date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time3date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time3 %}" style="text-decoration:none;">
                                     <div class="time3date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);"><p style="margin:0" class="time3date_p text-center">{{ theme.time3 }}</p>
                                         <p style="margin:0" class="time3date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time4date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time4 %}" style="text-decoration:none;">
+                                    <div class="time4date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time4date_p text-center">{{ theme.time4 }}</p>
+                                        <p style="margin:0" class="time4date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time4date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time4 %}" style="text-decoration:none;">
                                     <div class="time4date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time4date_p text-center">{{ theme.time4 }}</p>
                                         <p style="margin:0" class="time4date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time5date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time5 %}" style="text-decoration:none;">
+                                    <div class="time5date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time5date_p text-center">{{ theme.time5 }}</p>
+                                        <p style="margin:0" class="time5date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time5date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time5 %}" style="text-decoration:none;">
                                     <div class="time5date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time5date_p text-center">{{ theme.time5 }}</p>
                                         <p style="margin:0" class="time5date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="row">
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time6date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time6 %}" style="text-decoration:none;">
+                                    <div class="time6date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time6date_p text-center">{{ theme.time6 }}</p>
+                                        <p style="margin:0" class="time6date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time6date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time6 %}" style="text-decoration:none;">
                                     <div class="time6date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time6date_p text-center">{{ theme.time6 }}</p>
                                         <p style="margin:0" class="time6date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time7date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time7 %}" style="text-decoration:none;">
+                                    <div class="time7date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time7date_p text-center">{{ theme.time7 }}</p>
+                                        <p style="margin:0" class="time7date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time7date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time7 %}" style="text-decoration:none;">
                                     <div class="time7date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time7date_p text-center">{{ theme.time7 }}</p>
                                         <p style="margin:0" class="time7date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time8date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time8 %}" style="text-decoration:none;">
+                                    <div class="time8date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time8date_p text-center">{{ theme.time8 }}</p>
+                                        <p style="margin:0" class="time8date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time8date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time8 %}" style="text-decoration:none;">
                                     <div class="time8date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time8date_p text-center">{{ theme.time8 }}</p>
                                         <p style="margin:0" class="time8date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time9date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time9 %}" style="text-decoration:none;">
+                                    <div class="time9date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time9date_p text-center">{{ theme.time9 }}</p>
+                                        <p style="margin:0" class="time9date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time9date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time9 %}" style="text-decoration:none;">
                                     <div class="time9date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time9date_p text-center">{{ theme.time9 }}</p>
                                         <p style="margin:0" class="time9date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time10date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time10 %}" style="text-decoration:none;">
+                                    <div class="time10date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time10date_p text-center">{{ theme.time10 }}</p>
+                                        <p style="margin:0" class="time10date_p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time10date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time10 %}" style="text-decoration:none;">
                                     <div class="time10date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time10date_p text-center">{{ theme.time10 }}</p>
                                         <p style="margin:0" class="time10date_p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
-                        {% if theme.time11 %}
+                            {% if theme.time11 %}
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time11date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time11 %}" style="text-decoration:none;">
+                                    <div class="time11date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time11date_p text-center">{{ theme.time11 }}</p>
+                                        <p style="margin:0" class="time11date_p2 p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time11 %}" style="text-decoration:none;">
                                     <div class="time11date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time11date_p text-center">{{ theme.time11 }}</p>
                                         <p style="margin:0" class="time11date_p2 p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             {% endif %}
                             {% if theme.time12 %}
                             <div class="py-2 px-2" style="width:20%">
+                                {% if user.is_authenticated %}
+                                <a class="time12date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time12 %}" style="text-decoration:none;">
+                                    <div class="time12date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                        <p style="margin:0" class="time12date_p text-center">{{ theme.time12 }}</p>
+                                        <p style="margin:0" class="time12date_p2 p2 text-center">예약 가능</p>
+                                    </div>
+                                </a>
+                                {% else %}
                                 <a class="time12date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time12 %}" style="text-decoration:none;">
                                     <div class="time12date_div py-3" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                                         <p style="margin:0" class="time12date_p text-center">{{ theme.time12 }}</p>
                                         <p style="margin:0" class="time12date_p2 p2 text-center">예약 가능</p>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                             {% endif %}
                         </div>
@@ -452,133 +594,241 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 모바일 버전 -->
-            <div class="d-block d-sm-none my-4">
-                <h3 class="text-center" style="color:gold">{{ theme.name }}</h3>
-                <h5 class="text-center text-white">({{ theme.genre }})</h5>
-                <p style="font-size:1.4rem;" class="text-white text-center">난이도 :
-                    <span style="color:gold">
-                        {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
-                        {% if theme.difficulty == 2 %} ★★☆☆☆☆{% endif %}
-                        {% if theme.difficulty == 3 %} ★★★☆☆☆{% endif %}
-                        {% if theme.difficulty == 4 %} ★★★★☆☆{% endif %}
-                        {% if theme.difficulty == 5 %} ★★★★★☆{% endif %}
-                        {% if theme.difficulty == 6 %} ★★★★★★{% endif %}
-                    </span>
-                </p>
-                <p class="text-center">
-                    <img class="text-center" width="95%" height="410px" src="{{ theme.image.url }}">
-                </p>
-                <div class="row d-flex justify-content-center">
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time1date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time1 %}" style="text-decoration:none;">
-                            <div class="time1date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time1date_p text-center">{{ theme.time1 }}</p>
-                                <p style="margin:0" class="time1date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time2date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time2 %}" style="text-decoration:none;">
-                            <div class="time2date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
-                                <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time3date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time3 %}" style="text-decoration:none;">
-                            <div class="time3date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);"><p style="margin:0" class="time3date_p text-center">{{ theme.time3 }}</p>
-                                <p style="margin:0" class="time3date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time4date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time4 %}" style="text-decoration:none;">
-                            <div class="time4date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time4date_p text-center">{{ theme.time4 }}</p>
-                                <p style="margin:0" class="time4date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time5date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time5 %}" style="text-decoration:none;">
-                            <div class="time5date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time5date_p text-center">{{ theme.time5 }}</p>
-                                <p style="margin:0" class="time5date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time6date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time6 %}" style="text-decoration:none;">
-                            <div class="time6date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time6date_p text-center">{{ theme.time6 }}</p>
-                                <p style="margin:0" class="time6date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time7date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time7 %}" style="text-decoration:none;">
-                            <div class="time7date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time7date_p text-center">{{ theme.time7 }}</p>
-                                <p style="margin:0" class="time7date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time8date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time8 %}" style="text-decoration:none;">
-                            <div class="time8date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time8date_p text-center">{{ theme.time8 }}</p>
-                                <p style="margin:0" class="time8date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time9date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time9 %}" style="text-decoration:none;">
-                            <div class="time9date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time9date_p text-center">{{ theme.time9 }}</p>
-                                <p style="margin:0" class="time9date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time10date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time10 %}" style="text-decoration:none;">
-                            <div class="time10date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time10date_p text-center">{{ theme.time10 }}</p>
-                                <p style="margin:0" class="time10date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    {% if theme.time11 %}
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time11 %}" style="text-decoration:none;">
-                            <div class="time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time11date_p text-center">{{ theme.time11 }}</p>
-                                <p style="margin:0" class="time11date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% if theme.time12 %}
-                    <div class="p-2 col-6" style="width:20%">
-                        <a class="time12date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time12 %}" style="text-decoration:none;">
-                            <div class="time12date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time12date_p text-center">{{ theme.time12 }}</p>
-                                <p style="margin:0" class="time12date_p2 text-center">예약 가능</p>
-                            </div>
-                        </a>
-                    </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <!-- 모바일 버전 -->
+    <div class="d-block d-sm-none my-4">
+            <h3 class="text-center" style="color:gold">{{ theme.name }}</h3>
+            <h5 class="text-center text-white">({{ theme.genre }})</h5>
+            <p style="font-size:1.4rem;" class="text-white text-center">난이도 :
+                <span style="color:gold">
+                    {% if theme.difficulty == 1 %} ★☆☆☆☆☆{% endif %}
+                    {% if theme.difficulty == 2 %} ★★☆☆☆☆{% endif %}
+                    {% if theme.difficulty == 3 %} ★★★☆☆☆{% endif %}
+                    {% if theme.difficulty == 4 %} ★★★★☆☆{% endif %}
+                    {% if theme.difficulty == 5 %} ★★★★★☆{% endif %}
+                    {% if theme.difficulty == 6 %} ★★★★★★{% endif %}
+                </span>
+            </p>
+            <p class="text-center">
+                <img class="text-center" width="95%" height="410px" src="{{ theme.image.url }}">
+            </p>
+            <div class="row d-flex justify-content-center">
+                <div class="p-2 col-6">
+                    {% if user.is_authenticated %}
+                    <a class="time1date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time1 %}" style="text-decoration:none;">
+                        <div class="time1date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time1date_p text-center">{{ theme.time1 }}</p>
+                            <p style="margin:0" class="time1date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time1date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time1 %}" style="text-decoration:none;">
+                        <div class="time1date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time1date_p text-center">{{ theme.time1 }}</p>
+                            <p style="margin:0" class="time1date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
                     {% endif %}
                 </div>
+                <div class="p-2 col-6">
+                    {% if user.is_authenticated %}
+                    <a class="time2date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time2 %}" style="text-decoration:none;">
+                        <div class="time2date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
+                            <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time2date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time2 %}" style="text-decoration:none;">
+                        <div class="time2date_div">
+                            <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
+                            <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="w-100"></div>
+                <div class="p-2 col-6">
+                    {% if user.is_authenticated %}
+                    <a class="time3date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time3 %}" style="text-decoration:none;">
+                        <div class="time3date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time3date_p text-center">{{ theme.time3 }}</p>
+                            <p style="margin:0" class="time3date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time3date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time3 %}" style="text-decoration:none;">
+                        <div class="time3date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time3date_p text-center">{{ theme.time3 }}</p>
+                            <p style="margin:0" class="time3date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time4date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time4 %}" style="text-decoration:none;">
+                        <div class="time4date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time4date_p text-center">{{ theme.time4 }}</p>
+                            <p style="margin:0" class="time4date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time4date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time4 %}" style="text-decoration:none;">
+                        <div class="time4date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time4date_p text-center">{{ theme.time4 }}</p>
+                            <p style="margin:0" class="time4date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="w-100"></div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time5date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time5 %}" style="text-decoration:none;">
+                        <div class="time5date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time5date_p text-center">{{ theme.time5 }}</p>
+                            <p style="margin:0" class="time5date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time5date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time5 %}" style="text-decoration:none;">
+                        <div class="time5date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time5date_p text-center">{{ theme.time5 }}</p>
+                            <p style="margin:0" class="time5date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time6date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time6 %}" style="text-decoration:none;">
+                        <div class="time6date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time6date_p text-center">{{ theme.time6 }}</p>
+                            <p style="margin:0" class="time6date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time6date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time6 %}" style="text-decoration:none;">
+                        <div class="time6date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time6date_p text-center">{{ theme.time6 }}</p>
+                            <p style="margin:0" class="time6date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="w-100"></div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time7date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time7 %}" style="text-decoration:none;">
+                        <div class="time7date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time7date_p text-center">{{ theme.time7 }}</p>
+                            <p style="margin:0" class="time7date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time7date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time7 %}" style="text-decoration:none;">
+                        <div class="time7date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time7date_p text-center">{{ theme.time7 }}</p>
+                            <p style="margin:0" class="time7date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time8date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time8 %}" style="text-decoration:none;">
+                        <div class="time8date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time8date_p text-center">{{ theme.time8 }}</p>
+                            <p style="margin:0" class="time8date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time8date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time8 %}" style="text-decoration:none;">
+                        <div class="time8date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time8date_p text-center">{{ theme.time8 }}</p>
+                            <p style="margin:0" class="time8date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="w-100"></div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time9date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time9 %}" style="text-decoration:none;">
+                        <div class="time9date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time9date_p text-center">{{ theme.time9 }}</p>
+                            <p style="margin:0" class="time9date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time9date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time9 %}" style="text-decoration:none;">
+                        <div class="time9date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time9date_p text-center">{{ theme.time9 }}</p>
+                            <p style="margin:0" class="time9date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time10date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time10 %}" style="text-decoration:none;">
+                        <div class="time10date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time10date_p text-center">{{ theme.time10 }}</p>
+                            <p style="margin:0" class="time10date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time10date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time10 %}" style="text-decoration:none;">
+                        <div class="time10date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time10date_p text-center">{{ theme.time10 }}</p>
+                            <p style="margin:0" class="time10date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                {% if theme.time11 %}
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time11date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time11 %}" style="text-decoration:none;">
+                        <div class="time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time11date_p text-center">{{ theme.time11 }}</p>
+                            <p style="margin:0" class="time11date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time11 %}" style="text-decoration:none;">
+                        <div class="time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time11date_p text-center">{{ theme.time11 }}</p>
+                            <p style="margin:0" class="time11date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if theme.time12 %}
+                <div class="p-2 col-6" style="width:20%">
+                    {% if user.is_authenticated %}
+                    <a class="time12date_a text-white" href="{% url 'theme:booking_admin' date theme.name theme.time12 %}" style="text-decoration:none;">
+                        <div class="time12date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time12date_p text-center">{{ theme.time12 }}</p>
+                            <p style="margin:0" class="time12date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="time12date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time12 %}" style="text-decoration:none;">
+                        <div class="time12date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                            <p style="margin:0" class="time12date_p text-center">{{ theme.time12 }}</p>
+                            <p style="margin:0" class="time12date_p2 text-center">예약 가능</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-
-
 {% endblock %}
