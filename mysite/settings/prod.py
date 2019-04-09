@@ -3,6 +3,8 @@ from .common import *
 ALLOWED_HOSTS = ['*']
 DEBUG = False
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 AWS_ACCESS_KEY_ID = 'AKIAVNC3EVGMGNL5BLSR'
 AWS_SECRET_ACCESS_KEY = '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'
