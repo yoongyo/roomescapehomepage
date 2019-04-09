@@ -4,3 +4,5 @@ dj-database-url
 psycopg2
 Pillow
 django-debug-toolbar
+boto3
+django-storages
