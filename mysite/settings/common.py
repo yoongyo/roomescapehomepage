@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'froala_editor',
     'FAQ',
     'booking',
+    'storages'
 ]
 
 MIDDLEWARE = [

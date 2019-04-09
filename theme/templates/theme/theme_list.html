@@ -21,8 +21,8 @@
 
     $(function() {
         {% for i in theme %}
-            var v1 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time1 }}"+":00";
             var today = new Date()
+            var v1 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time1 }}"+":00";
             var date1 = new Date(v1);
             if (today.getTime() > date1.getTime()){
                 $(".time1date_a").attr("href", "#");
@@ -737,12 +737,4 @@
     </div>
 </div>
 
-
-<script>
-    $(function() {
-        {% for i in booking %}
-            var url = "{{ i.theme.pk }}_{{ i.time }}_a text-white";
-        {% endfor %}
-    });
-</script>
 {% endblock %}
