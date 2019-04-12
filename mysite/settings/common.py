@@ -111,12 +111,3 @@ FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier','code_view',
         'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
         'url', 'video')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mysite', 'media')
-
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'mysite', 'staticfiles')
-STATICFILES_DIRS = [
- os.path.join(BASE_DIR,  'mysite', 'static'),
-]
