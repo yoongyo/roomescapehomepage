@@ -5,4 +5,4 @@ psycopg2
 Pillow
 django-debug-toolbar
 boto3
-django_storages
+django-storages
