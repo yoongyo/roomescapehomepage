@@ -22,9 +22,8 @@
     $(function() {
         {% for i in theme %}
             var today = new Date()
-            var v1 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time1 }}"+":00";
-            var t1 = v1.split(/[- :]/);
-            var date1 = new Date(t1[0], t1[1]-1, t1[2], t1[3], t1[4], t1[5]);
+            var v1 =("{{ year }}" +"-" +"{{ month|add:1 }}"+"-"+"{{ day }}"+" "+"{{ i.time1 }}"+":00").split(/[- :]/);
+            var date1 = new Date(v1[0], v1[1]-1, v1[2], v1[3], v1[4], v1[5]);
             if (today.getTime() > date1.getTime()){
                 $(".time1date_a").attr("href", "#");
                 $(".time1date_div").attr("style", "border:1px solid #555 !important");
@@ -33,7 +32,7 @@
                 $(".time1date_p2").html("예약 불가");
             }
             var v2 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time2 }}"+":00";
-            var date2 = new Date(v2.replace(/-/g, '/'));
+            var date2 = new Date(v2);
             if (today.getTime() > date2.getTime()){
                 $(".time2date_a").attr("href", "#");
                 $(".time2date_div").attr("style", "border:1px solid #555 !important");
@@ -42,7 +41,7 @@
                 $(".time2date_p2").html("예약 불가");
             }
             var v3 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time3 }}"+":00";
-            var date3 = new Date(v3.replace(/-/g, '/'));
+            var date3 = new Date(v3);
             if (today.getTime() > date3.getTime()){
                 $(".time3date_a").attr("href", "#");
                 $(".time3date_div").attr("style", "border:1px solid #555 !important");
@@ -51,7 +50,7 @@
                 $(".time3date_p2").html("예약 불가");
             }
             var v4 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time4 }}"+":00";
-            var date4 = new Date(v4.replace(/-/g, '/'));
+            var date4 = new Date(v4);
             if (today.getTime() > date4.getTime()){
                 $("#time4date_a").attr("href", "#");
                 $(".time4date_div").attr("style", "border:1px solid #555 !important");
@@ -60,7 +59,7 @@
                 $(".time4date_p2").html("예약 불가");
             }
             var v5 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time5 }}"+":00";
-            var date5 = new Date(v5.replace(/-/g, '/'));
+            var date5 = new Date(v5);
             if (today.getTime() > date5.getTime()){
                 $(".time5date_div").attr("style", "border:1px solid #555 !important");
                 $(".time5date_p").attr("style", "color: #555 !important; margin:0");
@@ -68,7 +67,7 @@
                 $(".time5date_p2").html("예약 불가");
             }
             var v6 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time6 }}"+":00";
-            var date6 = new Date(v6.replace(/-/g, '/'));
+            var date6 = new Date(v6);
             if (today.getTime() > date6.getTime()){
                 $(".time6date_a").attr("href", "#");
                 $(".time6date_div").attr("style", "border:1px solid #555 !important");
@@ -77,7 +76,7 @@
                 $(".time6date_p2").html("예약 불가");
             }
             var v7 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time7 }}"+":00";
-            var date7 = new Date(v7.replace(/-/g, '/'));
+            var date7 = new Date(v7);
             if (today.getTime() > date7.getTime()){
                 $(".time7date_a").attr("href", "#");
                 $(".time7date_div").attr("style", "border:1px solid #555 !important");
@@ -86,7 +85,7 @@
                 $(".time7date_p2").html("예약 불가");
             }
             var v8 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time8 }}"+":00";
-            var date8 = new Date(v8.replace(/-/g, '/'));
+            var date8 = new Date(v8);
             if (today.getTime() > date8.getTime()){
                 $(".time8date_a").attr("href", "#");
                 $(".time8date_div").attr("style", "border:1px solid #555 !important");
@@ -95,7 +94,7 @@
                 $(".time8date_p2").html("예약 불가");
             }
             var v9 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time9 }}"+":00";
-            var date9 = new Date(v9.replace(/-/g, '/'));
+            var date9 = new Date(v9);
             if (today.getTime() > date9.getTime()){
                 $(".time9date_a").attr("href", "#");
                 $(".time9date_div").attr("style", "border:1px solid #555 !important");
@@ -104,7 +103,7 @@
                 $(".time9date_p2").html("예약 불가");
             }
             var v10 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time10 }}"+":00";
-            var date10 = new Date(v10.replace(/-/g, '/'));
+            var date10 = new Date(v10);
             if (today.getTime() > date10.getTime()){
                 $(".time10date_a").attr("href", "#");
                 $(".time10date_div").attr("style", "border:1px solid #555 !important");
@@ -113,7 +112,7 @@
                 $(".time10date_p2").html("예약 불가");
             }
             var v11 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time11 }}"+":00";
-            var date11 = new Date(v11.replace(/-/g, '/'));
+            var date11 = new Date(v11);
             if (today.getTime() > date11.getTime()){
                 $(".time11date_a").attr("href", "#");
                 $(".time11date_div").attr("style", "border:1px solid #555 !important");
@@ -122,7 +121,7 @@
                 $(".time11date_p2").html("예약 불가");
             }
             var v12 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time12 }}"+":00";
-            var date12 = new Date(v12.replace(/-/g, '/'));
+            var date12 = new Date(v12);
             if (today.getTime() > date12.getTime()){
                 $(".time12date_a").attr("href", "#");
                 $(".time12date_div").attr("style", "border:1px solid #555 !important");
