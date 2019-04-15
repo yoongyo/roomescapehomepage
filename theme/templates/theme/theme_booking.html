@@ -642,7 +642,7 @@
                     </a>
                     {% else %}
                     <a class="time2date_a text-white" href="{% url 'theme:booking_detail' date theme.name theme.time2 %}" style="text-decoration:none;">
-                        <div class="time2date_div">
+                        <div class="time2date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
                             <p style="margin:0" class="time2date_p text-center">{{ theme.time2 }}</p>
                             <p style="margin:0" class="time2date_p2 text-center">예약 가능</p>
                         </div>
