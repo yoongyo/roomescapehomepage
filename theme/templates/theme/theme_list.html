@@ -23,7 +23,8 @@
         {% for i in theme %}
             var today = new Date()
             var v1 ="{{ year }}" +"/" +"{{ month|add:1 }}"+"/"+"{{ day }}"+"/"+"{{ i.time1 }}"+":00";
-            var date1 = new Date(v1.replace(/-/g, '/'));
+            var t1 = v1.split(/[- :]/);
+            var date1 = new Date(t1[0], t1[1]-1, t1[2], t1[3], t1[4], t1[5]);
             if (today.getTime() > date1.getTime()){
                 $(".time1date_a").attr("href", "#");
                 $(".time1date_div").attr("style", "border:1px solid #555 !important");
