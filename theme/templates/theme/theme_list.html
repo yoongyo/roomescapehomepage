@@ -701,10 +701,10 @@
                             </div>
                         </a>
                         {% else %}
-                        <a class="time11date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time11 %}" style="text-decoration:none;">
-                            <div class="time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
-                                <p style="margin:0" class="time11date_p text-center">{{ i.time11 }}</p>
-                                <p style="margin:0" class="time11date_p2 p2 text-center">예약 가능</p>
+                        <a class="{{ i.pk }}time11date_a text-white" href="{% url 'theme:booking_detail' date i.name i.time11 %}" style="text-decoration:none;">
+                            <div class="{{ i.pk }}time11date_div" style="border: 1px solid gold;background-color:rgb(85,85,85);">
+                                <p style="margin:0" class="{{ i.pk }}time11date_p text-center">{{ i.time11 }}</p>
+                                <p style="margin:0" class="{{ i.pk }}time11date_p2 p2 text-center">예약 가능</p>
                             </div>
                         </a>
                         {% endif %}
