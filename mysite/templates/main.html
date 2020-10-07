@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
+    {% load static %}
     <head>
         <meta charset="utf-8">
         <!-- 부트스트랩 모바일 -->
@@ -148,6 +149,9 @@
                 }
 
             });
+
+            function showPopup() {window.open("{% static 'popup.html' %}", "a", "width=400, height=300, left=100, top=50");}
+            showPopup();
         </script>
         <style>
             .MultiCarousel { float: left; overflow: hidden; padding: 30px; width: 100%; position:relative; }

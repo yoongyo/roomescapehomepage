@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.shortcuts import reverse
 
+
 class Theme(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='theme/')
