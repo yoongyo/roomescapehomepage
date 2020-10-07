@@ -1,4 +1,4 @@
-django==2.0.0
+django==2.2.13
 gunicorn
 dj-database-url
 psycopg2
