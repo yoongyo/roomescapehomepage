@@ -2,7 +2,7 @@ from .common import *
 import dj_database_url
 
 ALLOWED_HOSTS = ['*']
-DEBUG = False
+DEBUG = True
 
 # DATABASE
 db_from_env = dj_database_url.config(env='DATABASE_URL', conn_max_age=500)
